@@ -1,6 +1,7 @@
 import csv
 import pandas as pd
 import numpy as np
+import re
 
 
 def choose_colour(df, colour):
@@ -47,3 +48,17 @@ def pivot_tables(df, card:str = 'Card' , cols:str =  'Row', values:str = 'Word')
     df_card_id = add_card_id(df)
 
     return df_card_id.pivot(index =  card,columns=cols, values=values)
+
+def check_fr_cherades(df, word):
+
+    if df.empty:
+        return True
+        
+    escaped_word = re.escape(word)
+    contains_substr = df.apply(lambda row: row.astype(str).str.count(escaped_word).sum() > 1, axis=1).any()
+
+    if contains_substr:
+        return False
+    
+    else:
+        return True
