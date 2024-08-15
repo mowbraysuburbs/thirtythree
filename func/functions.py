@@ -7,7 +7,8 @@ import re
 def choose_colour(df, colour):
     df['Colour'] = df['Colour'].astype(str)
     df['Row'] = df['Row'].astype(str)
-    # df['Colour_Row'] = df['Colour'] + '-' + df['Row']
+    df['Word'] = df['Word'].str.upper()
+
     df_drop = df.drop(columns=['Tag 1', 'Tag 2', 'Tag 3', 'South Africa'])
     df_clr = df_drop[df_drop['Colour'] == str(colour)]
 
@@ -52,8 +53,9 @@ def pivot_tables(df, card:str = 'Card' , cols:str =  'Row', values:str = 'Word')
 def check_fr_cherades(df, word):
 
     if df.empty:
+        print('empty df')
         return True
-        
+
     escaped_word = re.escape(word)
     contains_substr = df.apply(lambda row: row.astype(str).str.count(escaped_word).sum() > 1, axis=1).any()
 
@@ -61,4 +63,28 @@ def check_fr_cherades(df, word):
         return False
     
     else:
+        print('contains multiple cherades-type words')
         return True
+
+
+def cherades_table(df, word):
+
+    word = re.escape(word)
+
+    return df[df.apply(lambda row: row.astype(str).str.contains(word).any(), axis=1)]
+
+
+def shorten_tables(df, perc):
+
+    rows_to_keep = int(round(len(df) * (perc),0))
+
+    #check 
+    short_tbl = df.head(rows_to_keep)
+
+    if len(short_tbl) % 5 > 0:
+
+        return f"Sort out dataset number {len(short_tbl)} left over"
+    
+    else:
+
+        return short_tbl
