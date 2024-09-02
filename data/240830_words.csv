@@ -11,8 +11,8 @@ AB de Villiers,People and Characters,Cricket,,1,1,4
 AL CAPONE,TV Show,,,,0,5
 30 Seconds,Food and Drink,,,1,1,3
 5g network,Technology,,,,1,5
-7de Laan,TV Show,,,,0,4
-Abraham Lincoln,People and Characters,,,,0,1
+7de Laan,TV Show,,,1,0,4
+Marlon Brando,People and Characters,,,,0,1
 AfrikaBurn,Events,,,1,1,4
 Agapanthus,Nature,South Africa,,1,0,3
 Ahmed Kathrada,People and Characters,Politician,,,1,1
@@ -66,7 +66,7 @@ Arab Springs,History,Event,,,0,4
 Atomic Habits,Language and Literature ,Book,,,1,5
 Aye-aye,Animals,,,,1,2
 Backstage,TV Show,,,1,0,3
-Baking a Cake,Actions,,,,1,1
+*Cooking*,Actions,,,,1,1
 Bantu Land Act,History,Event,,1,0,2
 Brandenburg Gate,Geography,Landmarks,,,0,5
 American Idol,TV Show,,,,1,4
@@ -96,7 +96,7 @@ Becoming,Language and Literature ,Book,,,0,2
 "Bet on it, bet on it",Music,Lyrics,,,1,2
 Between Two Worlds ,Language and Literature ,Book,,,0,4
 Black Mirror,TV Show,,,,1,5
-Break the ice,Actions,,,,1,1
+*Break the ice*,Actions,,,,1,1
 Bromine,Math and Science,,,,0,3
 calabash,Nature,South Africa,,1,0,5
 Axolotl,Animals,,,,1,4
@@ -108,10 +108,10 @@ Big Brother Nigeria,TV Show,,,,0,2
 Blackpink,People and Characters,Music,Artist,,1,5
 "Breakfast, Brunch, Dinner",Technical,triplets,,,1,1
 Brunei,Geography,Country,,,0,3
-Cape Town Dance Festival,Events,,,,0,5
+Cape Town Dance Festival,Events,,,1,0,5
 Banshee,TV Show,,,,1,4
 Belize,Geography,Country,,,1,3
-Bin Rashied,Companies,,,,1,2
+Bin Rashied,Companies,,,1,1,2
 Bjorn Borg,People and Characters,,,,0,4
 Black Death,TV Show,,,,0,2
 Bleach,TV Show,Anime,,,0,1
@@ -121,12 +121,12 @@ Buffalo Springfield,People and Characters,Music,Artist,,1,1
 "Caterpillar, Cacoon, Butterfly",Technical,triplets,,,0,5
 beautiful girl,Music,Lyrics,,,1,4
 bethlehem,Geography,Landmarks,,,1,3
-Bite the bullet,Actions,,,,1,2
+*Bite the bullet*,Actions,,,,1,2
 Blink 182,People and Characters,Music,,,0,1
 Bobotie,Food and Drink,,,1,1,5
 BODMAS,Math and Science,,,,0,2
 Bohemian Rhapsody,Movies,,,,0,4
-Building a Sandcastle,Actions,,,,1,1
+*Snorkling*,Actions,,,,1,1
 Calculus,Math and Science,,,,0,3
 Cobalt,Math and Science,,,,0,5
 Bern,Geography,Capital,,,1,4
@@ -137,7 +137,7 @@ Boer War,History,South Africa,,1,0,2
 BoJack Horseman,TV Show,,,,1,5
 Burger's Daughter ,Language and Literature ,Book,,,1,1
 California Gold Rush,History,,,,0,4
-Charlize Theron,People and Characters,,,,0,3
+Charlize Theron,People and Characters,,,1,0,3
 Coldplay,People and Characters,Music,,,0,5
 best of both worlds,Music,,,,1,4
 Blood Diamond,TV Show,,,,0,1
@@ -199,11 +199,11 @@ COVID-19,History,Event,,,0,3
 Cowboy Bebop,TV Show,Anime,,,0,4
 Cristiano Ronaldo,People and Characters,,,1,1,1
 Double Hotdog with wopper sauce,Food and Drink,,,1,0,5
-building a house,Actions,,,,1,4
+*Exercising*,Actions,,,,1,4
 Cape Verde,Geography,Country,,,0,2
 careless whisper,Music,,,,1,3
 Carpenters,People and Characters,Music,,,0,1
-Chaos Theory,Math and Science,,,,1,5
+Chaos Theory,Math and Science,,,,0,5
 Chicken Biltong,Food and Drink,,,1,1,2
 crayfish curry,Food and Drink,Meal,,1,0,4
 crazy eights,Games,,,,0,3
@@ -222,7 +222,7 @@ Eiffel Tower,Geography,Landmarks,,,0,5
 Casey Neistat,People and Characters,Youtube,,1,1,4
 Chalte Chalte,Movies,,,,0,2
 Christ the Redeemer,Geography,Landmarks,,,1,2
-City of God,Movies,,,,1,5
+City of God,Movies,,,,0,5
 Comoros,Geography,Country,,,1,3
 Crusades,History,,,,0,1
 Da Vinci Code,Language and Literature ,Book,,,0,3
@@ -232,7 +232,7 @@ Equestrianism,Sports,,,,0,5
 Cassper Nyovest,People and Characters,Music,,1,1,4
 Chappies Bubble Gum,Food and Drink,,,1,0,2
 Churros,Food and Drink,Meal,,1,1,2
-Climbing up stairs,Actions,,,,1,5
+*walking up stairs*,Actions,,,,1,5
 Complex Numbers,Math and Science,,,,1,3
 cryptography,Technology,,,,0,1
 Deezer,Companies,,,,0,3
@@ -247,7 +247,7 @@ Curb Your Enthusiasm,TV Show,,,,1,3
 Cyril Ramaphosa,People and Characters,Politician,,,0,1
 Digital twins,Technology,,,,0,4
 Downton Abbey,TV Show,,,,0,3
-Dricus du Plessis,People and Characters,Sports,UFC,,1,1
+Dricus du Plessis,People and Characters,Sports,UFC,1,1,1
 Fault in Our Stars,Language and Literature ,Book,,,0,5
 Cleopatra,People and Characters,,,,1,4
 Coca-Cola Company,Companies,,,,1,2
@@ -262,7 +262,7 @@ FAUNA AND FLORA,Nature,,,,0,5
 "Corrosion, Rust",Technical,double,,,1,5
 Coruscant,Language and Literature ,Places,,,1,4
 Dala what you must,Culture,Language and Literature,,1,0,2
-Danny K,People and Characters,Music,Artist,,1,2
+Danny K,People and Characters,Music,Artist,1,1,2
 Death Star,Language and Literature ,Places,,,0,1
 Diego Maradona,People and Characters,Sports,Football,,1,3
 driftwood,Nature,,,,0,3
@@ -272,7 +272,7 @@ Fibonacci Sequence,Math and Science,,,,0,5
 Crooked Kingdom,Language and Literature ,Book,,,1,5
 Curious Case of Benjamin Button,Movies,,,,1,4
 Dark Knight Trilogy,Movies,,,,0,2
-David Kramer,People and Characters,South Africa,,,1,2
+David Kramer,People and Characters,South Africa,,1,1,2
 Die hard,Movies,,,,0,1
 district 9,Movies,South Africa,,1,1,3
 Dune,Movies,,,,0,3
@@ -333,7 +333,7 @@ Donga,Culture,,,1,1,4
 Down Second Avenue,Language and Literature ,Book,,,0,2
 Egoli,Geography,Places,,,1,5
 Euler's Identity,Math and Science,,,,0,1
-First national bank,Companies,,,,1,2
+First national bank,Companies,,,1,1,2
 Fleabag,TV Show,,,,0,3
 Fourier Transform,Math and Science,,,,1,3
 Glasgow,Geography,City ,,,0,4
@@ -347,18 +347,18 @@ flint,Things,,,,0,3
 "Fork, Spoon, Knife",Technical,triplets,,,1,2
 Fruit Cake,Food and Drink,,,,1,3
 Golden Dish,Geography,Places,,,0,4
-Grand Theft Auto V,Games,,,,1,1
+Grand Theft Auto VI,Games,,,,1,1
 Higgs Boson,Math and Science,,,,0,5
 "Earth, Wind, Fire",Technical,triplets,,,1,4
 Erling Haaland,People and Characters,,,1,0,2
 eye of tiger,Music,Lyrics,,,1,5
 Forbidden City,Geography,Landmarks,,,0,3
-Foschini Group,Companies,,,,0,1
+Foschini Group,Companies,,,1,0,1
 Four Corners,Movies,South Africa,,1,1,2
 Game Theory,Math and Science,,,,1,3
 Golden Ratio,Math and Science,,,,0,4
 guy fawkes day,Events,,,1,1,1
-Hitchhiking,Actions,,,,0,5
+*Hitchhiking*,Actions,,,,1,5
 Ek wil huis toe gaan,Music,Lyrics,,1,1,4
 Fahrenheit 451,Language and Literature ,Book,,,0,2
 FAHRENHEIT 9/11 ,Movies,,,,1,5
@@ -411,7 +411,7 @@ Ikigai,Language and Literature ,,,,0,5
 Ismaël Lô,Music,Artist,,,1,1
 Firefly,TV Show,,,,1,5
 Gaussian Distribution,Math and Science,,,,0,3
-Glassblowing,Actions,,,,1,4
+*Glassblowing*,Actions,,,,1,4
 Goldfinch,Language and Literature ,Book,,,0,2
 Good Place,TV Show,,,,0,1
 Guyana,Geography,Country,,,1,3
@@ -419,7 +419,7 @@ Helen Suzman,People and Characters,Politician,,,0,4
 Hermanus Whale Festival,Events,,,1,1,2
 In the 18 Area,Music,Lyrics,,,0,5
 it's too late to apologize,Music,Lyrics,,,1,1
-Flying a Kite,Actions,,,,1,5
+*Flying*,Actions,,,,1,5
 Gem Squash,Food and Drink,,,,0,3
 Global Positioning System,Technology,,,,1,4
 GOOGLE GLASSES,Technology,,,,0,2
@@ -492,7 +492,7 @@ Lima,Geography,Capital,,,0,5
 Hidden Leaf Village,Language and Literature ,Places,,,1,5
 Hit the nail on the head,Language and Literature ,,,,1,4
 Hitchhiker's Guide to Galaxy,Language and Literature ,Book,,,0,3
-Jan Smuts,People and Characters,Politician,,,0,1
+Jan Smuts,People and Characters,Politician,,1,0,1
 Jerry Rice,People and Characters,Sports,,,0,2
 Joe Barber,Movies,South Africa,,1,1,2
 Kabaddi,Sports,,,,1,3
@@ -581,7 +581,7 @@ Markiplier,People and Characters,Youtube,,1,1,1
 Neil Armstrong,People and Characters,,,,0,5
 James Cleveland Owens,People and Characters,Sports,,,0,3
 King of Hill,TV Show,,,,1,4
-Knitting a Scarf,Actions,,,,1,5
+*Knitting*,Actions,,,,1,5
 Line of Duty,TV Show,,,,0,1
 Lion's ear,Nature,South Africa,,1,0,2
 "Lions, Tigers, Bears",Technical,triplets,,,1,3
@@ -642,7 +642,7 @@ Pangea,Geography,,,,0,5
 Laaitie,Culture,,,1,1,4
 Lucky Star,Food and Drink,,,1,1,5
 Madam & Eve,TV Show,,,1,0,3
-Mexican wave,Actions,,,,1,2
+*Mexican wave*,Actions,,,,1,2
 Michael Schumacher,People and Characters,Sports,F1,,0,2
 MKBHD,People and Characters,Youtube,,,0,1
 MrBeast,People and Characters,Youtube,,,1,3
@@ -720,7 +720,7 @@ Pangolin,Animals,,,,0,4
 Patrice Motsepe,People and Characters,,,,1,1
 Pokémon Red,Games,,,,0,5
 Mohamed Salah,People and Characters,Sports,,,1,5
-MoParks,Companies,,,,1,4
+MoParks,Companies,,,1,1,4
 Narcos,TV Show,,,,0,3
 Naruto Uzumaki,People and Characters,Anime,,1,0,1
 Oliver Tambo,People and Characters,Politician,,1,1,2
@@ -749,6 +749,7 @@ Parkour,Sports,,,,1,3
 PEP Stores,Companies,,,1,0,4
 prodigal son,TV Show,,,,0,5
 Project Runway,TV Show,,,,1,1
+Make the circle bigger,Culture,,,,0,3
 Narnia,Language and Literature ,Places,,,1,5
 night in tunisia,Music,Song,,,1,4
 Noot vir Noot,TV Show,,,1,0,1
@@ -772,7 +773,6 @@ Purple jelly tot,Food and Drink,,,1,0,5
 Nkosi,Culture,,,1,1,5
 Oslo,Geography,Capital,,,0,1
 Pan's Labyrinth ,Movies,,,,1,4
-Patricia De Lille,People and Characters,Politician,,1,0,3
 Paul Levesque,People and Characters,Sports,,,1,2
 Peppermint Crisp,Food and Drink,,,,1,3
 Petra,Geography,Landmarks,,,0,2
@@ -839,20 +839,20 @@ rubix cube,Things,,,,0,2
 São Tomé and Príncipe,Geography,Country,,,0,4
 Sasuke Uchiha,People and Characters,Anime,,,0,3
 Sergio Mendez,People and Characters,Music,,,0,5
-Painting a Wall,Actions,,,,1,5
+*Painting*,Actions,,,,1,5
 Ray tracing,Technology,,,,1,3
 "Red, Green, Yellow",Technical,triplets,,,1,2
 Risk,Games,,,,1,4
 Royal Dutch Shell,Companies,,,1,1,1
 Sago Pudding,Food and Drink,,,,0,1
 Santiago,Geography,,,,0,2
-Scorpions,Companies,Animals,,,0,4
+Scorpions,Companies,Animals,,1,0,4
 Shard,Geography,Landmarks,,,0,3
 Simpsons,TV Show,,,,0,5
 "Park, Neutral, Drive ",Technical,triplets,,,1,5
 "Ready, Set, Go",Technical,triplets,,,1,3
 Rivonia Trial,History,,,,1,2
-Running a Marathon,Actions,,,,1,1
+*Running*,Actions,,,,1,1
 Salaam malaykom,Language and Literature ,Book,,1,1,4
 Sangoma,Culture,,,1,0,1
 Sebastian Vettel,People and Characters,Sports,,,0,4
@@ -961,7 +961,7 @@ Thomas Edison,People and Characters,,,,0,4
 Tokoloshi,Culture,,,1,0,2
 Skeem Saam,TV Show,,,1,1,3
 Spike Spiegel,People and Characters,Anime,,,1,5
-Surfing the wave,Actions,,,,1,1
+*Surfing*,Actions,,,,1,1
 Survivor Series,TV Show,,,,1,4
 Taekwondo,Sports,,,,0,3
 Taj Mahal,Geography,Landmarks,,1,0,1
@@ -980,7 +980,7 @@ Thermodynamics,Math and Science,,,,0,5
 Toyota Hilux Bakkie,Things,South Africa,,1,0,4
 Two oceans marathon,Events,,,1,0,2
 Steven Spielberg,People and Characters,Director,,,1,3
-Sweeping the floor,Actions,,,,1,5
+*Sweeping*,Actions,,,,1,5
 Table Mountain Dassie,Culture,,,1,1,4
 Tetris,Games,,,,1,2
 The Legend of Zelda,Games,,,,0,3
@@ -990,14 +990,14 @@ Triathlon,Sports,,,,1,1
 Turing Machine,Math and Science,,,,0,4
 Ubuntu,Culture,,,1,0,2
 "Swim, Jog, Cycle",Technical,triplets,,,1,3
-Taking Photographs,Actions,,,,1,5
+*Taking Photos*,Actions,,,,1,5
 Tatjana Smith,People and Characters,Sports,,,1,4
 The Elder Scrolls V,Games,,,,1,2
 Tonga,Geography,Country,,,0,1
 Treaty of Versailles,History,Event,,,0,3
 Twin Peaks,TV Show,,,,0,5
 Tyla Seethal,People and Characters,Music,Artist,,0,4
-typing on keyboard,Actions,,,,1,1
+*typing on keyboard*,Actions,,,,1,1
 Up the Creek,Events,,,,0,2
 Tattooist of Auschwitz,Language and Literature ,Book,,,1,3
 Terminator,Movies,,,,1,4
@@ -1016,9 +1016,9 @@ tito mboweni sha sha,Music,Lyrics,,1,1,2
 Trifle,Food and Drink,,,,0,1
 TV license,Things,,,,0,3
 Uluru,Geography,Landmarks,,,0,4
-Under the clouds,Actions,,,,0,5
+Eyedress,People & Characters,Artist,,,1,5
 UNO,Games,,,,1,1
-Wayde van Niekerk,People and Characters,Sports,,,0,2
+Wayde van Niekerk,People and Characters,Sports,,1,0,2
 TKZee,Music,Artist,,1,1,3
 To Kill a Mockingbird,Language and Literature ,Book,,,1,4
 Tokoloshe,Culture,,,1,1,2
@@ -1039,7 +1039,7 @@ V&A Waterfront,Geography,Places,,,0,4
 Vanuatu,Geography,Country,,,0,5
 vie maak die jol vol,Culture,,,1,1,1
 "We will, we will rock you",Music,Lyrics,,,0,2
-Trevor Noah,People and Characters,South Africa,,,1,3
+Trevor Noah,People and Characters,South Africa,,1,1,3
 Twister,Games,,,,1,4
 Ultimate Frisbee,Sports,,,,1,5
 Valley of the End,Language and Literature ,Places,,,0,4
@@ -1047,13 +1047,13 @@ Victoria Falls,Geography,Landmarks,,,0,3
 Vietnam War,History,Wars,,,0,1
 "Vinegar, Baking Soda",Technical,double,,,1,1
 Wakanda,Language and Literature ,Places,,,0,5
-Watering the plants,Actions,,,,1,2
+Dunning–Kruger effect,Language and Literature ,,,,1,2
 Wellington,Geography,Capital,,,0,2
 Trivial Pursuit,Games,Boardgame,,,1,3
-Virat Kohli,People and Characters,Sports,Cricket,0,1,5
+Virat Kohli,People and Characters,Sports,Cricket,,1,5
 Virtual private network,Technology,,,,1,4
 Voice,TV Show,,,,0,4
-Washing the dishes,Actions,,,,1,1
+*Washing the dishes*,Actions,,,,1,1
 Westworld,TV Show,,,,0,2
 Whiskey Sour,Food and Drink,Drink,,,0,5
 "Win, Lose, Draw",Technical,triplets,,,0,3
