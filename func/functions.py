@@ -29,31 +29,6 @@ def shuffle_words(df):
     return df.sample(frac=1).reset_index(drop=True)
 
 
-def correct_df_shape(df, cards_per_page):
-    '''
-    
-    '''
-
-    words_per_card = 5
-
-    df_charades = df[df['Tag 1'] == 'Actions']
-    df_others = df[df['Tag 1'] != 'Actions']
-
-    charades_word_num = int(df_charades.shape[0]/cards_per_page)*cards_per_page
-    others_word_num = int(int(df_others.shape[0]/words_per_card)/cards_per_page)*cards_per_page
-
-    print(f'Number of charades words: {charades_word_num}')
-    print(f'Number of ordinary words: {others_word_num}')
-
-    df_charades_shfl = shuffle_words(df_charades)
-    df_others_shfl = shuffle_words(df_others)
-
-    df_charades_final = df_charades_shfl.iloc[:charades_word_num]
-    df_others_final = df_others_shfl.iloc[:others_word_num]
-
-    return pd.concat([df_charades_final, df_others_final], ignore_index=True)
-
-
 def colour_select(df, colour):
 
     df_drop = df.drop(columns=['Tag 2', 'Tag 3', 'South Africa'])
@@ -90,8 +65,10 @@ def pivot_table(df, card:str = 'Card' , cols:str =  'Row', values:str = 'Word'):
 
     return df.pivot(index =  card,columns=cols, values=values)
 
-def check_fr_cherades(df, word):
+def check_fr_charades(df, word):
+
     count = 1
+
     if df.empty:
 
         print(f'Iteration: {count}')
@@ -102,35 +79,19 @@ def check_fr_cherades(df, word):
     contains_substr = df.apply(lambda row: row.astype(str).str.count(escaped_word).sum() > 2, axis=1).any()
 
     if contains_substr:
-        return False
+        count += 1
+        print(f'Iteration: {count}')
+        return True
     
     else:
-        print(f'Iteration: {count}')
-        count += 1
-        return True
+        return False
 
 
-def cherades_table(df, word):
+def charades_table(df, word):
 
     word = re.escape(word)
 
     return df[df.apply(lambda row: row.astype(str).str.contains(word).any(), axis=1)]
-
-
-def shorten_tables(df, perc):
-
-    rows_to_keep = int(round(len(df) * (perc),0))
-
-    #check 
-    short_tbl = df.head(rows_to_keep)
-
-    if len(short_tbl) % 5 > 0:
-
-        return f"Sort out dataset number {len(short_tbl)} left over"
-    
-    else:
-
-        return short_tbl
 
 def save_csv(df, filename):
     df.to_csv(f'output/{filename}.csv', index=True, mode='w')
