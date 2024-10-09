@@ -6,7 +6,6 @@ import re
 
 def uppercase_words(df):
     df['Colour'] = df['Colour'].astype(str)
-    # df['Row'] = df['Row'].astype(str)
     df['Word'] = df['Word'].str.upper()
 
     return df
@@ -63,7 +62,11 @@ def add_card_id(df, num_of_cards):
 
 def pivot_table(df, card:str = 'Card' , cols:str =  'Row', values:str = 'Word'):
 
-    return df.pivot(index =  card,columns=cols, values=values)
+    return (
+        df
+        .pivot(index =  card,columns=cols, values=values)
+        .reset_index(drop=True)
+    )
 
 def check_fr_charades(df, word):
 
@@ -87,14 +90,17 @@ def check_fr_charades(df, word):
         return False
 
 
-def charades_table(df, word):
-
+def check_special_words(df, word):
+    '''
+    Returns a dataframe which contains rows 
+    which contain a substr specified by user
+    '''
     word = re.escape(word)
 
     return df[df.apply(lambda row: row.astype(str).str.contains(word).any(), axis=1)]
 
 def save_csv(df, filename):
-    df.to_csv(f'output/{filename}.csv', index=True, mode='w')
+    df.to_csv(f'output/{filename}.csv', index=False, mode='w')
 
 
 def word_number_order(multiplier):
@@ -105,6 +111,10 @@ def count_df(df):
     return df.shape[0]
 
 def total_prints(df_length, cards, words):
+    '''
+        use words =1 for special words that 
+        only occur once per side e.g. charades, group of words 
+    '''
     return int(df_length/(cards*words))
 
 def shorten_table(df, length):

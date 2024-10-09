@@ -7,7 +7,7 @@ from func.functions import *
 cards_per_print = 18
 words_per_card = 5
 
-df = pd.read_csv('data/240901_words.csv')
+df = pd.read_csv('data/240922_words.csv')
 df_final = uppercase_words(df)
 
 #checks
@@ -27,14 +27,28 @@ clr_2_charades_pages = total_prints(clr_2_charades_orig_total, cards_per_print, 
 clr_2_charades_new_words_total = total_words(clr_2_charades_pages, cards_per_print, 1)
 
 clr_2_charades_shuffle = shuffle_words(clr_2_charades)
-clr_2_charades_filtered = shorten_table(clr_2_charades_shuffle, clr_2_charades_new_words_total)
+clr_2_charades_filtered = shorten_table(
+    clr_2_charades_shuffle, 
+    clr_2_charades_new_words_total
+)
 
 #other cards
 clr_2_other_orig_total = count_df(clr_2_other) + clr_2_charades_new_words_total #add the charades words here
-clr_2_other_pages = total_prints(clr_2_other_orig_total, cards_per_print, words_per_card)
+clr_2_other_pages = total_prints(
+    clr_2_other_orig_total, 
+    cards_per_print, 
+    words_per_card
+)
 
-clr_2_other_pages_new_words_total = total_words(clr_2_other_pages, cards_per_print, words_per_card)
-clr_2_num_of_cards = num_of_cards(clr_2_other_pages_new_words_total, words_per_card)
+clr_2_other_pages_new_words_total = total_words(
+    clr_2_other_pages, 
+    cards_per_print, 
+    words_per_card
+)
+clr_2_num_of_cards = num_of_cards(
+    clr_2_other_pages_new_words_total, 
+    words_per_card
+)
 
 clr_2_other_shuffle = shuffle_words(clr_2_other)
 clr_2_other_filtered = shorten_table(
@@ -60,7 +74,12 @@ while check_fr_charades(clr_2_final, '*'):
 
     clr_2_others = (
         clr_2_final
-        .merge(clr_2_charades, on=clr_2_final.columns.tolist(), how='left', indicator=True)
+        .merge(
+            clr_2_charades, 
+            on=clr_2_final.columns.tolist(), 
+            how='left', 
+            indicator=True
+        )
         .query('_merge == "left_only"')
         .drop(columns=['_merge'])
     )
