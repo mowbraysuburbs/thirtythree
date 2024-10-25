@@ -33,6 +33,7 @@ def colour_select(df, colour):
     df_drop = df.drop(columns=['Tag 2', 'Tag 3', 'South Africa'])
     df_clr = df_drop[df_drop['Colour'] == str(colour)]
 
+    print(f"Total words per side: {df_clr.shape[0]}")
     return df_clr
 
 
@@ -108,7 +109,8 @@ def word_number_order(multiplier):
     return (base_list * multiplier)[:5 * multiplier]
 
 def count_df(df):
-    return df.shape[0]
+    print(f"Total words of df: {df.shape[0]}")
+    return int(df.shape[0])
 
 def total_prints(df_length, cards, words):
     '''

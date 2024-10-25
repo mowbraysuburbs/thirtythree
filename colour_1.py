@@ -9,7 +9,8 @@ words_per_card = 5
 
 
 # df = pd.read_csv('data/240922_words.csv')
-df = pd.read_csv('test/tech_word_test.csv')
+# df = pd.read_csv('test/tech_word_test.csv')
+df = pd.read_csv('data/241022_words.csv')
 df_final = uppercase_words(df)
 
 #checks
@@ -20,6 +21,7 @@ print(count_df(df_final))
 clr_1 = colour_select(df_final, 0)
 clr_1_orig_total = count_df(clr_1)
 
+# divide cards into different types
 clr_1_tech = clr_1.loc[clr_1['Tag 1'] == 'Technical']
 clr_1_other = clr_1.loc[clr_1['Tag 1'] != 'Technical']
 
@@ -34,7 +36,7 @@ clr_1_tech_filtered = shorten_table(
 )
 
 #selecting position on card
-row_no_tech = int(5)
+row_no_tech = int(1)
 clr_1_tech_filtered['Row'] = row_no_tech
 
 
@@ -55,7 +57,7 @@ clr_1_other_pages_new_words_total = total_words(
 
 clr_1_num_of_cards = num_of_cards(
     clr_1_other_pages_new_words_total, 
-    words_per_card
+    words_per_card,
 )
 
 clr_1_other_shuffle = shuffle_words(clr_1_other)
@@ -65,20 +67,22 @@ clr_1_other_filtered = shorten_table(
 ) 
 
 #assigning row number to words
-clr_2_word_num_list = word_number_order(clr_1_num_of_cards)
+clr_1_word_num_list = word_number_order(clr_1_num_of_cards)
 
 for _ in range(clr_1_tech_filtered.shape[0]):
-    clr_2_word_num_list.remove(row_no_tech)
+    if row_no_tech in clr_1_word_num_list:
+        clr_1_word_num_list.remove(row_no_tech)
 
 clr_1_other_shuffle = shuffle_words(clr_1_other_filtered)
-clr_1_other_shuffle['Row'] = clr_2_word_num_list
+clr_1_other_shuffle['Row'] = clr_1_word_num_list
 
 clr_1_combined = pd.concat([clr_1_other_shuffle, clr_1_tech_filtered], ignore_index=True)
+
 
 clr_1_card_id = add_card_id(clr_1_combined, clr_1_num_of_cards)
 clr_1_final = pivot_table(clr_1_card_id)
 
-clr_1_tech = charades_table(clr_1_final ,"[")
+clr_1_tech = check_special_words(clr_1_final ,"[")
 
 clr_1_others = (
     clr_1_final
@@ -93,11 +97,11 @@ clr_1_others = (
 )
 
 clr_1_times_two = clr_1_others.iloc[0:18]
-clr_1_charades = clr_1_others.iloc[18:18*clr_1_num_of_cards]
+clr_1_charades = clr_1_others.iloc[18:18*2]
 clr_1_normal = clr_1_others.iloc[18:]
 
 
-save_csv(clr_1_tech, 'clr_1_tech')
-save_csv(clr_1_times_two, 'clr_1_times_two')
-save_csv(clr_1_charades, 'clr_1_charades')
-save_csv(clr_1_normal, 'colour_1_normal')
+save_csv(clr_1_tech, 'orange_tech')
+save_csv(clr_1_times_two, 'orange_times_two')
+save_csv(clr_1_charades, 'orange_charades')
+save_csv(clr_1_normal, 'orange_normal')
