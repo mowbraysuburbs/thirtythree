@@ -10,7 +10,7 @@ words_per_card = 5
 
 # df = pd.read_csv('data/240922_words.csv')
 # df = pd.read_csv('test/tech_word_test.csv')
-df = pd.read_csv('data/241022_words.csv')
+df = pd.read_csv('data/241027_words.csv')
 df_final = uppercase_words(df)
 
 #checks
@@ -98,7 +98,7 @@ clr_1_others = (
 
 clr_1_times_two = clr_1_others.iloc[0:18]
 clr_1_charades = clr_1_others.iloc[18:18*2]
-clr_1_normal = clr_1_others.iloc[18:]
+clr_1_normal = clr_1_others.iloc[18*2:]
 
 
 save_csv(clr_1_tech, 'orange_tech')
