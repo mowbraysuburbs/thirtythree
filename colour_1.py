@@ -61,7 +61,8 @@ clr_1_other_shuffle = shuffle_words(clr_1_other)
 clr_1_other_filtered = shorten_table(
     clr_1_other_shuffle, 
     clr_1_other_pages_new_words_total - clr_1_tech_new_words_total
-) 
+)  
+
 
 #assigning row number to words
 clr_1_word_num_list = word_number_order(clr_1_num_of_cards)
