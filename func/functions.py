@@ -61,7 +61,7 @@ def add_card_id(df, num_of_cards):
     return df_final
 
 
-def pivot_table(df, card:str = 'Card' , cols:str =  'Row', values:str = 'Word'):
+def pivot_table(df, card:str = 'Card' , cols:str =  'Row', values:list = ['Word', 'Difficulty_total']):
 
     return (
         df
