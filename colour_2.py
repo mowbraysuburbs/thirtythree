@@ -7,7 +7,7 @@ from func.functions import *
 cards_per_print = 18
 words_per_card = 5
 
-df = pd.read_csv('data/241027_words.csv')
+df = pd.read_csv('data/241029_words.csv')
 df_final = uppercase_words(df)
 
 #checks

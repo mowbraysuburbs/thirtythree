@@ -10,7 +10,7 @@ words_per_card = 5
 
 # df = pd.read_csv('data/240922_words.csv')
 # df = pd.read_csv('test/tech_word_test.csv')
-df = pd.read_csv('data/241027_words.csv')
+df = pd.read_csv('data/241029_words.csv')
 df_final = uppercase_words(df)
 
 #checks
@@ -78,30 +78,31 @@ clr_1_other_shuffle['Row'] = clr_1_word_num_list
 
 clr_1_combined = pd.concat([clr_1_other_shuffle, clr_1_tech_filtered], ignore_index=True)
 
+clr_1_combined['Difficulty_total'] = clr_1_combined.groupby('Row')['Difficulty'].transform('sum')
 
-clr_1_card_id = add_card_id(clr_1_combined, clr_1_num_of_cards)
-clr_1_final = pivot_table(clr_1_card_id)
+# clr_1_card_id = add_card_id(clr_1_combined, clr_1_num_of_cards)
+# clr_1_final = pivot_table(clr_1_card_id)
 
-clr_1_tech = check_special_words(clr_1_final ,"[")
+# clr_1_tech = check_special_words(clr_1_final ,"[")
 
-clr_1_others = (
-    clr_1_final
-    .merge(
-        clr_1_tech, 
-        on=clr_1_final.columns.tolist(), 
-        how='left', 
-        indicator=True
-    )
-    .query('_merge == "left_only"')
-    .drop(columns=['_merge'])
-)
+# clr_1_others = (
+#     clr_1_final
+#     .merge(
+#         clr_1_tech, 
+#         on=clr_1_final.columns.tolist(), 
+#         how='left', 
+#         indicator=True
+#     )
+#     .query('_merge == "left_only"')
+#     .drop(columns=['_merge'])
+# )
 
-clr_1_times_two = clr_1_others.iloc[0:18]
-clr_1_charades = clr_1_others.iloc[18:18*2]
-clr_1_normal = clr_1_others.iloc[18*2:]
+# clr_1_times_two = clr_1_others.iloc[0:18]
+# clr_1_charades = clr_1_others.iloc[18:18*2]
+# clr_1_normal = clr_1_others.iloc[18*2:]
 
 
-save_csv(clr_1_tech, 'orange_tech')
-save_csv(clr_1_times_two, 'orange_times_two')
-save_csv(clr_1_charades, 'orange_charades')
-save_csv(clr_1_normal, 'orange_normal')
+# save_csv(clr_1_tech, 'orange_tech')
+# save_csv(clr_1_times_two, 'orange_times_two')
+# save_csv(clr_1_charades, 'orange_charades')
+# save_csv(clr_1_normal, 'orange_normal')
