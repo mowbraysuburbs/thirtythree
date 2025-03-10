@@ -109,13 +109,12 @@ def word_number_order(multiplier):
     return (base_list * multiplier)[:5 * multiplier]
 
 def count_df(df):
-    print(f"Total words of df: {df.shape[0]}")
     return int(df.shape[0])
 
 def total_prints(df_length, cards, words):
     '''
-        use words =1 for special words that 
-        only occur once per side e.g. charades, group of words 
+        Calcs total number of prints 
+        rounds down to the nearest page
     '''
     return int(df_length/(cards*words))
 
@@ -123,7 +122,11 @@ def shorten_table(df, length):
     return df.iloc[:length]
 
 def total_words(pages, num_of_cards,num_of_words):
-    return pages*num_of_cards*num_of_words
+    '''
+    Calcs total number of words per set
+    which fills all the pages with no remainder
+    '''
+    return int(pages*num_of_cards*num_of_words)
 
 def num_of_cards(df_length, num_of_words):
     return int(df_length/num_of_words)
