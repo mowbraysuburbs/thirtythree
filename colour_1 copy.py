@@ -20,7 +20,8 @@ clr_1 = colour_select(df_final, 0)
 clr_1_total = count_df(clr_1)
 
 #specs
-pages = total_prints(clr_1, cards_per_print, words_per_card)
+df_length = count_df(clr_1)
+pages = total_prints(df_length, cards_per_print, words_per_card)
 cards = num_of_cards(clr_1_total, words_per_card)
 words = total_words(pages, cards, words_per_card)
 
@@ -37,80 +38,47 @@ another_shuffle['Row'] = num_list
 card_id = add_card_id(another_shuffle, cards)
 card_id['Difficulty_total'] = card_id.groupby('Card')['Difficulty'].transform('sum')
 
-# target_diff = {
-#     7: [25,35],
-#     8: [55,65],
-#     9: [65,75],
-# }
+target_diff = {
+    7: 35,
+    8: 35,
+    9: 70,
+}
 
-# def even_distribute(df, clr_1_num_of_cards, target_diff):
+def adjust_difficulty(df, target_diff):
+    result = pd.DataFrame()
+    remaining_df = df.copy()
+    
+    for difficulty, amount in target_diff.items():
 
-#     columns = ['Card', 'Row', 'Word', 'Tag 1', 'Colour', 'Difficulty_total']
-#     perfect = pd.DataFrame(columns=columns)    
-
-#     for i in target_diff:
-
-#     perfect = df[df['Difficulty_total'] == target_diff]
-#     outliers = df[(df['Difficulty_total'] < target_diff) | (df['Difficulty_total'] > target_diff)]
-#     ##################
-
-#     # divide cards into different types
-#     new_tech = outliers.loc[outliers['Tag 1'] == 'Technical']
-#     new_other = outliers.loc[outliers['Tag 1'] != 'Technical']
-
-#     new_tech['Row'] = row_no_tech
-
-#     #other cards
-#     new_other_count_df = count_df(outliers)
-#     new_tech_count_df = count_df(new_tech)
-#     # clr_1_other_shuffle = shuffle_words(new_other)
-
-#     #assigning row number to words
-#     new_num_list = word_number_order(int(new_other_count_df/5))
-
-#     for _ in range(new_tech_count_df):
-#         if row_no_tech in new_num_list:
-#             new_num_list.remove(row_no_tech)
-
-#     new_other_shuffle = shuffle_words(new_other)
-#     new_other_shuffle['Row'] = new_num_list
-
-#     # print(new_other_shuffle)
-
-#     # perfect_final = perfect.drop(columns='column_name', inplace=True)
-
-#     new_combined =  pd.concat([perfect, new_tech, new_other_shuffle], ignore_index=True)
-#     new_combined.drop(columns='Card', inplace=True)
-
-#     # print(new_combined)
-
-#     new_card_id = add_card_id(new_combined, clr_1_num_of_cards)
-#     new_card_id['Difficulty_total'] = new_card_id.groupby('Card')['Difficulty'].transform('sum')
-
-#     ##################
-#     return new_card_id
-
-# result = clr_1_card_id  # Start with the initial input
-# for _ in range(15):  # Repeat 5 iterations
-#     result = even_distribute(result, clr_1_num_of_cards)
+        print(f"Difficulty: {difficulty}, Amount: {amount}")
+        attempts = 0
+        max_attempts = 10  # Set a maximum number of attempts to avoid infinite loops
+    #     while len(result[result['Difficulty_total'] == difficulty]) <= amount:
+    #         if attempts >= max_attempts or remaining_df.empty:
+    #             print(f"Cannot satisfy the criteria for difficulty {difficulty} with amount {amount}.")
+    #             break
+    #         shuffled_df = shuffle_words(remaining_df)
+    #         shuffled_df['Row'] = word_number_order(len(shuffled_df))
+    #         card_id = add_card_id(shuffled_df, cards)
+    #         card_id['Difficulty_total'] = card_id.groupby('Card')['Difficulty'].transform('sum')
+            
+    #         for i in range(len(card_id)):
+    #             if card_id['Difficulty_total'][i] == difficulty:
+    #                 result = pd.concat([result, card_id.iloc[i:i+1]]).drop_duplicates()
+    #                 remaining_df = card_id[~card_id.index.isin(result.index)]
+            
+    #         attempts += 1
+    #         print(f"Attempts: {attempts}, Difficulty: {difficulty}, Result size: {len(result)}")
+    
+    # # Add remaining words to the result without exceeding the difficulty limit
+    # result = pd.concat([result, remaining_df]).drop_duplicates()
+    
+    return result
 
 
-# new_clr_1_final = pivot_table(result).sort_values(by=('Difficulty_total', 1), ascending=False)
-# new_clr_1_final.to_csv('all_words_stage2.csv', index=False)
+# # Adjust difficulty and get the final DataFrame
+adjusted_df = adjust_difficulty(card_id, target_diff)
+# print(adjusted_df.head())
 
-# clr_1_tech = check_special_words(clr_1_final ,"[")
-
-# clr_1_others = (
-#     clr_1_final
-#     .merge(
-#         clr_1_tech, 
-#         on=clr_1_final.columns.tolist(), 
-#         how='left', 
-#         indicator=True
-#     )
-#     .query('_merge == "left_only"')
-#     .drop(columns=['_merge'])
-# )
-
-# clr_1_normal = clr_1_others.iloc[18:]
-# save_csv(clr_1_normal, 'orange_normal')
+# # Save the final DataFrame to a CSV file
+# adjusted_df.to_csv('adjusted_words.csv', index=False)
