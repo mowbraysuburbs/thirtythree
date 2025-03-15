@@ -1,9 +1,17 @@
 import csv
 import pandas as pd
 import numpy as np
+import datetime
 from func.functions import *
 
-#get data
+#global
+today = datetime.date.today().strftime('%Y%m%d')
+card_colours ={
+    0: 'blue',
+    1: 'orange',
+}
+
+#get and clean data
 df = pd.read_csv('data/241115_words.csv')
 df_final = uppercase_words(df)
 
@@ -15,10 +23,10 @@ words_per_card = 5
 check_dups(df_final)
 print(count_df(df_final))
 
-for i in range(0,2):
+for colour in list(card_colours.keys()):
 
     #filter sides
-    clr_1 = colour_select(df_final, i)
+    clr_1 = colour_select(df_final, colour)
     clr_1_total = count_df(clr_1)
 
     #specs
@@ -45,8 +53,8 @@ for i in range(0,2):
         8: 70,
         9: 70,
     }
-    
+
     result = sort_difficulity(card_id, target_diff, 10)
 
     final = pivot_table(result).sort_values(by=('Difficulty_total', 1), ascending=False)
-    save_csv(final, f'final_{i}')
+    save_csv(final, f'{today}_final_{card_colours[colour]}')
