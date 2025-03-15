@@ -130,3 +130,45 @@ def total_words(pages, num_of_cards,num_of_words):
 
 def num_of_cards(df_length, num_of_words):
     return int(df_length/num_of_words)
+
+
+def sort_difficulity(df, diff_limits, attempts):
+
+    result = pd.DataFrame(columns=df.columns)
+    remaining_df = df.copy()
+    attempt = 1
+
+    for attempt in range(1, attempts+1):
+        if len(remaining_df) == 0:
+            break
+        for index, row in remaining_df.iterrows():
+            diff_row = int(row['Difficulty_total'])
+            if diff_row in list(diff_limits.keys()):
+                if len(result[result['Difficulty_total'] == diff_row]) <= diff_limits[diff_row]*5:
+                    new_row = pd.DataFrame([row], columns=df.columns)
+                    result = pd.concat([result, new_row], ignore_index=False).drop_duplicates()
+                else:
+                    print(f"Difficulty {diff_row} is full")
+
+        remaining_df = (
+            pd.merge(
+                remaining_df, 
+                result, 
+                on=list(df.columns), 
+                how='outer', 
+                indicator=True
+            )
+            .query('_merge == "left_only"')
+            .drop('_merge', axis=1)
+        )
+
+        leftover_cols = remaining_df['Card']
+        leftover_rows = remaining_df['Row']
+        remaining_df = shuffle_words(remaining_df.drop(columns=['Card', 'Difficulty_total', 'Row']))
+        remaining_df['Row'] = leftover_rows.values
+        remaining_df['Card'] = leftover_cols.values
+        remaining_df['Difficulty_total'] = remaining_df.groupby('Card')['Difficulty'].transform('sum')
+
+        print(attempt, len(remaining_df))
+
+    return result
