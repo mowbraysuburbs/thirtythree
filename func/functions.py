@@ -40,9 +40,9 @@ def colour_select(df, colour):
 def create_card_id_list(num_of_cards):
 
     number_list = list(range(1, num_of_cards+1))
-    df_new = shuffle_id_column(number_list)
+    # df_new = shuffle_id_column(number_list)
 
-    return df_new
+    return number_list
 
 def add_card_id(df, num_of_cards):
 
