@@ -141,38 +141,46 @@ def sort_difficulity(df, diff_limits, attempts):
         if len(remaining_df) == 0:
             print('All words have been added')
             break
-        for index, row in remaining_df.iterrows():
-            diff_row = int(row['Difficulty_total'])
-            if diff_row in list(diff_limits.keys()):
-                if len(result[result['Difficulty_total'] == diff_row]) < diff_limits[diff_row]*5:
-                    new_row = pd.DataFrame([row], columns=df.columns)
-                    result = pd.concat([result, new_row], ignore_index=False).drop_duplicates()
+        unique_cards = remaining_df['Card'].unique()
+        for card in unique_cards:
+            card_all = remaining_df.iloc[remaining_df['Card'].values == card]
+            card_diff = card_all['Difficulty_total'].values[0]
+            # print(card_all)
+            # print(card_diff)
+            if card_diff in list(diff_limits.keys()):
+                # print('yes')
+                if len(result[result['Difficulty_total'] == card_diff]) < diff_limits[card_diff]*5:
+            #         new_row = pd.DataFrame([card_all], columns=df.columns)
+                    result = pd.concat([result, card_all], ignore_index=False).drop_duplicates()
+                    # print(f"Card {card} added")
                 # else:
                 #     print(f"Difficulty {diff_row} is full")
 
-        remaining_df = (
-            pd.merge(
-                remaining_df, 
-                result, 
-                on=list(df.columns), 
-                how='outer', 
-                indicator=True
-            )
-            .query('_merge == "left_only"')
-            .drop('_merge', axis=1)
-        )
+        # filter_cols = ['Card', 'Row', 'Word', 'Tag 1', 'Colour', 'Difficulty', 'Length']
 
-        leftover_cols = remaining_df['Card']
-        leftover_rows = remaining_df['Row']
-        remaining_df = shuffle_words(remaining_df.drop(columns=['Card', 'Difficulty_total', 'Row']))
-        remaining_df['Row'] = leftover_rows.values
-        remaining_df['Card'] = leftover_cols.values
-        remaining_df['Difficulty_total'] = remaining_df.groupby('Card')['Difficulty'].transform('sum')
+        # result_keys = result[filter_cols]
+        # remaining_df = (
+        #     remaining_df[~remaining_df[filter_cols]
+        #     .isin(result_keys.to_dict(orient='list'))
+        #     .all(axis=1)]
+        # )
+
+        # #seperate columns
+        # leftover_cols = remaining_df['Card']
+        # leftover_rows = remaining_df['Row']
+
+        # remaining_df = shuffle_words(remaining_df.drop(columns=['Card', 'Row', 'Difficulty_total']))
+        # remaining_df['Row'] = leftover_rows.values
+        # remaining_df['Card'] = leftover_cols.values
+        # remaining_df['Difficulty_total'] = remaining_df.groupby('Card')['Difficulty'].transform('sum')
         
-        if attempt == attempts:
-            print(f'words left: {len(remaining_df)}')
-            remaining_df['Difficulty_total'] = remaining_df.groupby('Card')['Difficulty'].transform('sum')
-            result = pd.concat([result, remaining_df], ignore_index=False).drop_duplicates()
-        # print(attempt, len(remaining_df))
+
+        # print(remaining_df)
+        # if attempt == attempts:
+        #     print(f'words left: {len(remaining_df)}')
+        #     remaining_df = remaining_df.drop(columns=['Difficulty_total'])
+        #     remaining_df['Difficulty_total'] = remaining_df.groupby('Card')['Difficulty'].transform('sum')
+        #     result = pd.concat([result, remaining_df], ignore_index=False).drop_duplicates()
+        # # print(attempt, len(remaining_df))
 
     return result

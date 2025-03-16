@@ -16,9 +16,9 @@ cards_per_print = 18
 words_per_card = 5
 
 target_diff = {
-    7: 30,
-    8: 60,
-    9: 72,
+    7: 20,
+    8: 130,
+    9: 20,
 }
 
 #get and clean data
@@ -48,13 +48,16 @@ for colour in list(card_colours.keys()):
     #shuffle data and add row numbers
     num_list = word_number_order(cards)
     another_shuffle = shuffle_words(final_rawdata)
+    for i in range(10):
+        another_shuffle = shuffle_words(another_shuffle)
     another_shuffle['Row'] = num_list
 
     #find difficulty total
     card_id = add_card_id(another_shuffle, cards)
+
     card_id['Difficulty_total'] = card_id.groupby('Card')['Difficulty'].transform('sum')
 
-    result = sort_difficulity(card_id, target_diff, 40)
+    result = sort_difficulity(card_id, target_diff, 3)
 
-    final = pivot_table(result).sort_values(by=('Difficulty_total', 1), ascending=False)
-    save_csv(final, f'{today}_final_{card_colours[colour]}')
+    # final = pivot_table(result).sort_values(by=('Difficulty_total', 1), ascending=False)
+    # save_csv(final, f'{today}_final_{card_colours[colour]}')
