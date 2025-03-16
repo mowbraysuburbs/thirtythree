@@ -11,13 +11,19 @@ card_colours ={
     1: 'orange',
 }
 
-#get and clean data
-df = pd.read_csv('data/241115_words.csv')
-df_final = uppercase_words(df)
-
 #variables
 cards_per_print = 18
 words_per_card = 5
+
+target_diff = {
+    7: 30,
+    8: 60,
+    9: 72,
+}
+
+#get and clean data
+df = pd.read_csv('data/250316_words.csv')
+df_final = uppercase_words(df)
 
 #checks
 check_dups(df_final)
@@ -48,13 +54,7 @@ for colour in list(card_colours.keys()):
     card_id = add_card_id(another_shuffle, cards)
     card_id['Difficulty_total'] = card_id.groupby('Card')['Difficulty'].transform('sum')
 
-    target_diff = {
-        7: 70,
-        8: 70,
-        9: 70,
-    }
-
-    result = sort_difficulity(card_id, target_diff, 10)
+    result = sort_difficulity(card_id, target_diff, 40)
 
     final = pivot_table(result).sort_values(by=('Difficulty_total', 1), ascending=False)
     save_csv(final, f'{today}_final_{card_colours[colour]}')

@@ -136,19 +136,19 @@ def sort_difficulity(df, diff_limits, attempts):
 
     result = pd.DataFrame(columns=df.columns)
     remaining_df = df.copy()
-    attempt = 1
 
     for attempt in range(1, attempts+1):
         if len(remaining_df) == 0:
+            print('All words have been added')
             break
         for index, row in remaining_df.iterrows():
             diff_row = int(row['Difficulty_total'])
             if diff_row in list(diff_limits.keys()):
-                if len(result[result['Difficulty_total'] == diff_row]) <= diff_limits[diff_row]*5:
+                if len(result[result['Difficulty_total'] == diff_row]) < diff_limits[diff_row]*5:
                     new_row = pd.DataFrame([row], columns=df.columns)
                     result = pd.concat([result, new_row], ignore_index=False).drop_duplicates()
-                else:
-                    print(f"Difficulty {diff_row} is full")
+                # else:
+                #     print(f"Difficulty {diff_row} is full")
 
         remaining_df = (
             pd.merge(
@@ -168,7 +168,11 @@ def sort_difficulity(df, diff_limits, attempts):
         remaining_df['Row'] = leftover_rows.values
         remaining_df['Card'] = leftover_cols.values
         remaining_df['Difficulty_total'] = remaining_df.groupby('Card')['Difficulty'].transform('sum')
-
-        print(attempt, len(remaining_df))
+        
+        if attempt == attempts:
+            print(f'words left: {len(remaining_df)}')
+            remaining_df['Difficulty_total'] = remaining_df.groupby('Card')['Difficulty'].transform('sum')
+            result = pd.concat([result, remaining_df], ignore_index=False).drop_duplicates()
+        # print(attempt, len(remaining_df))
 
     return result
