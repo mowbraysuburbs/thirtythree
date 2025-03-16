@@ -16,9 +16,9 @@ cards_per_print = 18
 words_per_card = 5
 
 target_diff = {
-    7: 20,
+    7: 100,
     8: 130,
-    9: 20,
+    9: 100,
 }
 
 #get and clean data
@@ -57,7 +57,7 @@ for colour in list(card_colours.keys()):
 
     card_id['Difficulty_total'] = card_id.groupby('Card')['Difficulty'].transform('sum')
 
-    result = sort_difficulity(card_id, target_diff, 3)
+    result = sort_difficulity(card_id, target_diff, 30)
 
-    # final = pivot_table(result).sort_values(by=('Difficulty_total', 1), ascending=False)
-    # save_csv(final, f'{today}_final_{card_colours[colour]}')
+    final = pivot_table(result).sort_values(by=('Difficulty_total', 1), ascending=False)
+    save_csv(final, f'{today}_final_{card_colours[colour]}')
