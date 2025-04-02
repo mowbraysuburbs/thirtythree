@@ -7,8 +7,8 @@ from func.functions import *
 #global
 today = datetime.date.today().strftime('%Y%m%d')
 card_colours ={
-    0: 'blue',
-    1: 'orange',
+    0: 'orange',
+    1: 'blue',
 }
 
 #variables
@@ -22,7 +22,7 @@ target_diff = {
 }
 
 #get and clean data
-df = pd.read_csv('data/250316_words.csv')
+df = pd.read_csv('data/250402_words.csv')
 df_final = uppercase_words(df)
 
 #checks
