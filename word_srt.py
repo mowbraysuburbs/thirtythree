@@ -16,9 +16,9 @@ cards_per_print = 18
 words_per_card = 5
 
 target_diff = {
-    7: 10,
-    8: 140,
-    9: 10,
+    7: 5,
+    8: 160,
+    9: 5,
 }
 
 #get and clean data
