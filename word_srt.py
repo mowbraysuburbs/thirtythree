@@ -16,13 +16,13 @@ cards_per_print = 18
 words_per_card = 5
 
 target_diff = {
-    7: 20,
-    8: 120,
-    9: 30,
+    7: 10,
+    8: 140,
+    9: 10,
 }
 
 #get and clean data
-df = pd.read_csv('data/250402_words.csv')
+df = pd.read_csv('data/250413_words.csv')
 df_final = uppercase_words(df)
 
 #checks
