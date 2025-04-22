@@ -17,12 +17,12 @@ words_per_card = 5
 
 target_diff = {
     7: 0,
-    8: 170,
-    9: 0,
+    8: 150,
+    9: 15,
 }
 
 #get and clean data
-df = pd.read_csv('data/250413_words.csv')
+df = pd.read_csv('data/250422_words.csv')
 df_final = uppercase_words(df)
 
 #checks
