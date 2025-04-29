@@ -75,7 +75,7 @@ def check_special_words(df, word):
 
 
 def save_csv(df, filename):
-    df.to_csv(f'output/{filename}.csv', index=False, mode='w')
+    df.to_csv(f'{filename}.csv', index=False, mode='w')
 
 
 def word_number_order(multiplier):

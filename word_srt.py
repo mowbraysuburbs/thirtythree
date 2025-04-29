@@ -22,7 +22,7 @@ target_diff = {
 }
 
 #get and clean data
-df = pd.read_csv('data/250422_words.csv')
+df = pd.read_csv('data/250429_words.csv')
 df_final = uppercase_words(df)
 
 #checks
@@ -59,18 +59,31 @@ for colour in list(card_colours.keys()):
 
     result = sort_difficulity(card_id, target_diff, 30)
 
+    checking = (
+        pivot_table(result)
+        .sort_values(by=('Difficulty_total', 1), ascending=False)
+
+    )
+
     final = (
         pivot_table(result)
         .sort_values(by=('Difficulty_total', 1), ascending=False)
-    )
+        .drop(columns = ['Difficulty_total'])        
+    )    
 
-    save_csv(final, f'{today}_final_{card_colours[colour]}')
+    final.columns =  final.columns.droplevel(0)
+
+    save_csv(final, f'checking/{today}_final_{card_colours[colour]}')
+    save_csv(
+        final,
+        f'output/{today}_final_{card_colours[colour]}',
+    )
 
     print(
         f"{card_colours[colour]}\n",
-        f"7: {final[final[('Difficulty_total', 1)] == 7.0].shape[0]} \n",
-        f"8: {final[final[('Difficulty_total', 1)] == 8.0].shape[0]} \n",
-        f"9: {final[final[('Difficulty_total', 1)] == 9.0].shape[0]} \n",    
+        f"7: {checking[checking[('Difficulty_total', 1)] == 7.0].shape[0]} \n",
+        f"8: {checking[checking[('Difficulty_total', 1)] == 8.0].shape[0]} \n",
+        f"9: {checking[checking[('Difficulty_total', 1)] == 9.0].shape[0]} \n",    
     )
 
 
